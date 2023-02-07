@@ -65,8 +65,8 @@ function Three() {
           startPosition.rotation[2] * (1 - elapsed) +
           endPosition.rotation[2] * elapsed;
       } else {
-        setIsMainPage(true);
         setIsAnimating(false);
+        setIsMainPage(true);
       }
     }
   });
