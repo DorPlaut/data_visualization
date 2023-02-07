@@ -88,7 +88,7 @@ function Three() {
         rotation={startPosition.rotation}
         ref={cameraRef}
       />
-      {isMainPage ? (
+      {/* {isMainPage ? (
         <OrbitControls
           ref={orbitControlsRef}
           enableRotate={false}
@@ -97,7 +97,7 @@ function Three() {
         />
       ) : (
         ''
-      )}
+      )} */}
       {/* <LightHelper /> */}
       <ambientLight intensity={0.5} />
       <pointLight position={[2, -3, 0]} color="red" intensity={1} />

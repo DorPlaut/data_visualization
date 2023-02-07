@@ -38,7 +38,6 @@ function Welcome({ setIsStarted, isMobile }) {
                   <ambientLight intensity={0.5} />
                   <mesh
                     onClick={() => {
-                      // setIsStarted(true);
                       handleClick();
                       dispatch(changePage('home'));
                     }}
