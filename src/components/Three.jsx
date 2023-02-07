@@ -77,9 +77,6 @@ function Three() {
     if (!!orbitControlsRef.current) {
       const { x, y } = state.mouse;
       orbitControlsRef.current.setAzimuthalAngle(x * angleToRadians(4));
-
-      // orbitControlsRef.current.setPolarAngle(20.13 + -y * angleToRadians(2));
-
       orbitControlsRef.current.update();
     }
   });

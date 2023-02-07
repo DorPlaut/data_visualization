@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import Btn from './three/Btn';
 import Planet from './three/Planet';
 import { MdScreenRotation } from 'react-icons/md';
@@ -33,19 +33,21 @@ function Welcome({ setIsStarted, isMobile }) {
         ) : (
           <>
             <div className="canvas-container">
-              <Canvas>
-                <ambientLight intensity={0.5} />
-                <mesh
-                  onClick={() => {
-                    // setIsStarted(true);
-                    handleClick();
-                    dispatch(changePage('home'));
-                  }}
-                >
-                  <Btn position={[0, 0, 4.1]} text="Lets Go!" />
-                </mesh>
-                <Planet speed={2} />
-              </Canvas>
+              <Suspense fallback="loading..">
+                <Canvas>
+                  <ambientLight intensity={0.5} />
+                  <mesh
+                    onClick={() => {
+                      // setIsStarted(true);
+                      handleClick();
+                      dispatch(changePage('home'));
+                    }}
+                  >
+                    <Btn position={[0, 0, 4.1]} text="Lets Go!" />
+                  </mesh>
+                  <Planet speed={2} />
+                </Canvas>
+              </Suspense>
             </div>
             <br />
             <span>
