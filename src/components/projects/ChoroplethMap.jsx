@@ -2,12 +2,22 @@ import styles from './styles/ChoroplethMap.module.css';
 import React from 'react';
 import * as topojson from 'topojson';
 import * as d3 from 'd3';
+// redux
+import { useSelector } from 'react-redux';
 
 function ChoroplethMap() {
+  // redux
+  const isMobile = useSelector((state) => state.isMobile.value);
+
   // size
-  const w = 940;
-  const h = 650;
-  const padding = 10;
+  let w = 940;
+  let h = 650;
+  let padding = 10;
+  if (isMobile) {
+    w = w * 0.6;
+    h = h * 0.6;
+    padding = padding * 0.6;
+  }
 
   // fetch data
   const url =

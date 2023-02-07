@@ -1,13 +1,24 @@
 import styles from './styles/Treemap.module.css';
 import React from 'react';
 import * as d3 from 'd3';
+// redux
+import { useSelector } from 'react-redux';
 
 function Treemap() {
+  // redux
+  const isMobile = useSelector((state) => state.isMobile.value);
+
   // size
-  const w = 1300;
-  const h = 800;
-  const legendHeight = h / 15;
-  const padding = 1;
+  let w = 1300;
+  let h = 800;
+  let legendHeight = h / 15;
+  let padding = 1;
+  if (isMobile) {
+    w = w * 0.6;
+    h = h * 0.6;
+    padding = padding * 0.6;
+    legendHeight = legendHeight * 0.6;
+  }
   // fetch data
   const url =
     'https://cdn.freecodecamp.org/testable-projects-fcc/data/tree_map/video-game-sales-data.json';

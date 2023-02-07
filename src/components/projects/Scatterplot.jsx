@@ -1,11 +1,21 @@
 import styles from './styles/Scatterplot.module.css';
 import React from 'react';
 import * as d3 from 'd3';
+// redux
+import { useSelector } from 'react-redux';
 
 function Scatterplot() {
-  const w = 850;
-  const h = 650;
-  const padding = 63;
+  // redux
+  const isMobile = useSelector((state) => state.isMobile.value);
+
+  let w = 850;
+  let h = 650;
+  let padding = 63;
+  if (isMobile) {
+    w = w * 0.6;
+    h = h * 0.6;
+    padding = padding * 0.6;
+  }
   // fetch data
   const url =
     'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json';

@@ -2,10 +2,22 @@ import styles from './styles/BarChart.module.css';
 import React from 'react';
 import * as d3 from 'd3';
 
+// redux
+import { useSelector } from 'react-redux';
+
 function BarChart() {
-  const w = 900;
-  const h = 500;
-  const padding = 50;
+  // redux
+  const isMobile = useSelector((state) => state.isMobile.value);
+
+  // set size
+  let w = 900;
+  let h = 500;
+  let padding = 50;
+  if (isMobile) {
+    w = w * 0.6;
+    h = h * 0.6;
+    padding = padding * 0.6;
+  }
   // fetch data
   const url =
     'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json';
@@ -112,7 +124,7 @@ function BarChart() {
     <div className={styles.body}>
       <h1 class={styles.title}>United States GDP</h1>
       <div className={styles.chart}>
-        <svg width={w} height={500} id="svg"></svg>
+        <svg width={w} height={h} id="svg"></svg>
       </div>
       <div
         id="tag"

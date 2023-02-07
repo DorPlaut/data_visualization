@@ -5,6 +5,7 @@ import { Canvas } from '@react-three/fiber';
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 import { changePage } from './redux/currentPageSlice';
+import { setIsMobile } from './redux/isMobileSlice';
 
 // components
 import BackHome from './components/BackHome';
@@ -18,17 +19,24 @@ import Welcome from './components/Welcome';
 
 function App() {
   // local state
-  const [isMobile, setIsMobile] = useState('');
+  const [isWideScreen, setIsWideScreen] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
   // redux
   const currentPage = useSelector((state) => state.currentPage.value);
+  const isMobile = useSelector((state) => state.isMobile.value);
+  const dispatch = useDispatch();
 
   //
   const defineMobile = () => {
-    if (window.outerWidth < 600) {
-      setIsMobile(true);
+    if (window.outerWidth < 950) {
+      dispatch(setIsMobile(true));
     } else {
-      setIsMobile(false);
+      dispatch(setIsMobile(false));
+    }
+    if (window.outerWidth < 600) {
+      setIsWideScreen(true);
+    } else {
+      setIsWideScreen(false);
     }
   };
   useEffect(() => {
@@ -37,13 +45,7 @@ function App() {
       defineMobile();
     });
   }, []);
-  // useEffect(() => {
-  //   if (window.outerWidth < 700) {
-  //     setIsMobile(true);
-  //   } else {
-  //     setIsMobile(false);
-  //   }
-  // }, []);
+
   return (
     <>
       <div className="app">
@@ -82,7 +84,7 @@ function App() {
           ''
         )}
         <>
-          <Welcome setIsStarted={setIsStarted} isMobile={isMobile} />
+          <Welcome setIsStarted={setIsStarted} isMobile={isWideScreen} />
         </>
       </div>
     </>

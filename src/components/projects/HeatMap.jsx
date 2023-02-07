@@ -2,13 +2,23 @@ import styles from './styles/HeatMap.module.css';
 import React from 'react';
 import * as topojson from 'topojson';
 import * as d3 from 'd3';
+// redux
+import { useSelector } from 'react-redux';
 
 function HeatMap() {
+  // redux
+  const isMobile = useSelector((state) => state.isMobile.value);
   // size
-  const w = 1200;
-  const h = 500;
-  const padding = 90;
-  const paddingLeft = padding / 2;
+  let w = 1200;
+  let h = 500;
+  let padding = 90;
+  let paddingLeft = padding / 2;
+  if (isMobile) {
+    w = w * 0.6;
+    h = h * 0.6;
+    padding = padding * 0.6;
+    paddingLeft = paddingLeft * 0.6;
+  }
   // fetch data
   const url =
     'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/global-temperature.json';
