@@ -1,0 +1,25 @@
+:root {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+body {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+@media screen and (max-width: 1000px) {
+  :root {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 700px) {
+  :root {
+    font-size: 11px;
+  }
+}
+@media screen and (max-height: 400px) {
+  :root {
+    font-size: 8px;
+  }
+}
