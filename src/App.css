@@ -9,6 +9,9 @@ a {
   color: inherit;
   text-decoration: none;
 }
+span {
+  color: aliceblue;
+}
 
 * {
   padding: 0;
