@@ -103,7 +103,7 @@ function BarChart() {
       .text('Gross Domestic Product')
       .attr('class', styles.label)
       .attr('x', h / 6)
-      .attr('y', -padding - 5);
+      .attr('y', -padding * 1.5);
     // .attr('transform', 'rotate(180deg)');
 
     //  append axis rollers

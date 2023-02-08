@@ -42,7 +42,10 @@
 .tag:hover {
   fill: #689e80;
 }
-text,
+text {
+  fill: #ece4d4;
+  scale: 0.8;
+}
 .yAxis,
 .xAxis {
   color: #ece4d4;
@@ -50,4 +53,5 @@ text,
 .label {
   fill: #ece4d4;
   transform: rotate(90deg);
+  font-size: 1.4rem;
 }

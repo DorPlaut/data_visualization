@@ -14,10 +14,10 @@ function Treemap() {
   let legendHeight = h / 15;
   let padding = 1;
   if (isMobile) {
-    w = w * 0.6;
-    h = h * 0.6;
-    padding = padding * 0.6;
-    legendHeight = legendHeight * 0.6;
+    w = w * 0.35;
+    h = h * 0.35;
+    padding = padding * 0.35;
+    legendHeight = legendHeight * 0.35;
   }
   // fetch data
   const url =

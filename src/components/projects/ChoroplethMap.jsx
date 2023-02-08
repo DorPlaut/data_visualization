@@ -14,9 +14,9 @@ function ChoroplethMap() {
   let h = 650;
   let padding = 10;
   if (isMobile) {
-    w = w * 0.6;
-    h = h * 0.6;
-    padding = padding * 0.6;
+    w = w * 0.45;
+    h = h * 0.4;
+    padding = padding * 0.4;
   }
 
   // fetch data
@@ -76,8 +76,10 @@ function ChoroplethMap() {
       .scaleLinear()
       .domain([0, color.range().length])
       .range([
-        w / 2 - (50 * color.range().length) / 2,
-        w / 2 - (50 * color.range().length) / 2 + 50 * color.range().length,
+        w / 2 - (padding * 5 * color.range().length) / 2,
+        w / 2 -
+          (padding * 5 * color.range().length) / 2 +
+          padding * 5 * color.range().length,
       ]);
     const legendAxis = d3
       .axisBottom(legendScale)
@@ -94,16 +96,23 @@ function ChoroplethMap() {
     // legend
     const legend = svg.append('g').attr('class', styles.legend);
 
-    legend.append('g').attr('transform', `translate( 0 ,50 )`).call(legendAxis);
+    legend
+      .append('g')
+      .attr('transform', `translate( 0 ,${padding * 5} )`)
+      .call(legendAxis);
     legend
       .selectAll('.rect')
       .data(color.range())
       .enter()
       .append('rect')
-      .attr('x', (d, i) => w / 2 - (50 * color.range().length) / 2 + i * 50)
+      .attr(
+        'x',
+        (d, i) =>
+          w / 2 - (padding * 5 * color.range().length) / 2 + i * padding * 5
+      )
       .attr('y', (d, i) => 0)
-      .attr('height', (d, i) => 50)
-      .attr('width', (d, i) => 50)
+      .attr('height', (d, i) => padding * 5)
+      .attr('width', (d, i) => padding * 5)
       .attr('fill', (d, i) => d);
 
     // MAP
@@ -156,6 +165,10 @@ function ChoroplethMap() {
       .attr('class', styles.states)
       .attr('d', path)
       .attr('transform', `translate( 0 ,40 )`);
+
+    if (isMobile) {
+      svg.selectAll('path').style('scale', '0.44');
+    }
   };
 
   return (

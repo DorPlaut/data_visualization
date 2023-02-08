@@ -12,9 +12,9 @@ function Scatterplot() {
   let h = 650;
   let padding = 63;
   if (isMobile) {
-    w = w * 0.6;
-    h = h * 0.6;
-    padding = padding * 0.6;
+    w = w * 0.46;
+    h = h * 0.46;
+    padding = padding * 0.46;
   }
   // fetch data
   const url =

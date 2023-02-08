@@ -14,10 +14,10 @@ function HeatMap() {
   let padding = 90;
   let paddingLeft = padding / 2;
   if (isMobile) {
-    w = w * 0.6;
-    h = h * 0.6;
-    padding = padding * 0.6;
-    paddingLeft = paddingLeft * 0.6;
+    w = w * 0.5;
+    h = h * 0.5;
+    padding = padding * 0.5;
+    paddingLeft = paddingLeft * 0.5;
   }
   // fetch data
   const url =
