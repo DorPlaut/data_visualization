@@ -5,19 +5,25 @@ import { angleToRadians } from '../../utils/angle';
 import { useTimer } from 'use-timer';
 
 function Loading(props) {
+  const meshRef = useRef();
+
+  useFrame((state, delta) => {
+    meshRef.current.rotation.x -= delta / 8;
+  });
   return (
     <mesh
       {...props}
       //   ref={meshRef}
     >
       <Text
+        ref={meshRef}
         rotation={[angleToRadians(270), angleToRadians(270), angleToRadians(0)]}
         fontSize={0.5}
-        color={'red'}
+        color={'white'}
         anchorX="center"
         anchorY="middle"
       >
-        Loading..
+        Loading...
       </Text>
 
       <meshStandardMaterial color={props.color} />

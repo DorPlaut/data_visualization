@@ -68,6 +68,7 @@ canvas {
   width: 100vw;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
@@ -121,6 +122,19 @@ canvas {
 
 .fade-out {
   animation: fadeOut 1s forwards;
+}
+
+/* footer */
+footer {
+  z-index: 1;
+  color: aliceblue;
+}
+footer a {
+  cursor: pointer;
+  transition: 0.2s;
+}
+footer a:hover {
+  color: purple;
 }
 
 /* animations */

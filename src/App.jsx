@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import './App.css';
 import { Canvas } from '@react-three/fiber';
 
@@ -52,9 +52,11 @@ function App() {
         {isStarted ? (
           <>
             <div className="three">
-              <Canvas>
-                <Three />
-              </Canvas>
+              <Suspense fallback={<span>loading...</span>}>
+                <Canvas>
+                  <Three />
+                </Canvas>
+              </Suspense>
             </div>
 
             {/* Projects */}

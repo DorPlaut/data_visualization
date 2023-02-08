@@ -18,6 +18,7 @@ import Ring from './three/Ring';
 import GlowBall from './three/GlowBall';
 import LightHelper from './three/LightHelper';
 import Loading from './three/Loading';
+import Btn from './three/Btn';
 
 function Three() {
   // state
@@ -43,7 +44,7 @@ function Three() {
   };
 
   useFrame((state, delta) => {
-    const elapsed = (state.clock.getElapsedTime() * 2) / 5;
+    const elapsed = (state.clock.getElapsedTime() * 2) / 6;
     if (isAnimating == true) {
       if (elapsed < 1) {
         cameraRef.current.position.x =
@@ -66,10 +67,16 @@ function Three() {
           endPosition.rotation[2] * elapsed;
       } else {
         setIsAnimating(false);
-        setIsMainPage(true);
       }
     }
   });
+  useEffect(() => {
+    if (isAnimating) {
+      setTimeout(() => {
+        setIsMainPage(true);
+      }, 3000);
+    }
+  }, [isAnimating]);
 
   // mouse control
 
@@ -80,16 +87,16 @@ function Three() {
       orbitControlsRef.current.update();
     }
   });
+
   return (
     <>
-      <Suspense fallback="loading...">
-        <PerspectiveCamera
-          makeDefault
-          position={startPosition.position}
-          rotation={startPosition.rotation}
-          ref={cameraRef}
-        />
-        {/* {isMainPage ? (
+      <PerspectiveCamera
+        makeDefault
+        position={startPosition.position}
+        rotation={startPosition.rotation}
+        ref={cameraRef}
+      />
+      {isMainPage ? (
         <OrbitControls
           ref={orbitControlsRef}
           enableRotate={false}
@@ -98,44 +105,51 @@ function Three() {
         />
       ) : (
         ''
-      )} */}
-        {/* <LightHelper /> */}
-        <ambientLight intensity={0.5} />
-        <pointLight position={[2, -3, 0]} color="red" intensity={1} />
-        <pointLight position={[-2, 3, 0]} color="blue" intensity={2} />
-        <pointLight position={[2, 3, 2]} color="green" intensity={2} />
-        <pointLight position={[10, 2, -5]} color="yellow" intensity={2} />
-        <Loading />
-        <Suspense
-          fallback={
-            <Loading
-              position={[-20, 26, 70]}
-              rotation={[
-                angleToRadians(0),
-                angleToRadians(90),
-                angleToRadians(90),
-              ]}
-            />
-          }
+      )}
+      {/* <LightHelper /> */}
+      <ambientLight intensity={0.5} />
+      <pointLight position={[2, -3, 0]} color="red" intensity={1} />
+      <pointLight position={[-2, 3, 0]} color="blue" intensity={2} />
+      <pointLight position={[2, 3, 2]} color="green" intensity={2} />
+      <pointLight position={[10, 2, -5]} color="yellow" intensity={2} />
+      <Loading />
+      <Suspense
+        fallback={
+          <Loading
+            position={[-20, 26, 70]}
+            rotation={[
+              angleToRadians(0),
+              angleToRadians(90),
+              angleToRadians(90),
+            ]}
+          />
+        }
+      >
+        <mesh
+          position={[-20, 22, 70]}
+          rotation={[angleToRadians(90), angleToRadians(0), angleToRadians(90)]}
+          onClick={() => setIsAnimating(true)}
         >
-          <GlowBall />
-          <Planet speed={10} />
-          <Ring setIsAnimating={setIsAnimating} />
-        </Suspense>
-        <Stars
-          ref={starsRef}
-          radius={100}
-          depth={50}
-          count={6000}
-          factor={7}
-          saturation={0}
-          fade
-          speed={1}
-        ></Stars>
-        <Effects disableGamma>
-          <unrealBloomPass threshold={1} strength={10} radius={1} />
-        </Effects>
+          <Btn text="Lets Fly" />
+        </mesh>
+
+        <GlowBall />
+        <Planet speed={10} />
+        <Ring setIsAnimating={setIsAnimating} />
       </Suspense>
+      <Stars
+        ref={starsRef}
+        radius={100}
+        depth={50}
+        count={6000}
+        factor={7}
+        saturation={0}
+        fade
+        speed={1}
+      ></Stars>
+      <Effects disableGamma>
+        <unrealBloomPass threshold={1} strength={10} radius={1} />
+      </Effects>
     </>
   );
 }

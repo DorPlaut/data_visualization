@@ -19,7 +19,7 @@ function Welcome({ setIsStarted, isMobile }) {
         <h1>D3 Data Visualization</h1>
         <h3>interactive display of my Data Visualization projects</h3>
         <p>
-          the projects pressented in the page are all part of FreeCodeCamp D3
+          the projects presented in the page are all part of FreeCodeCamp D3
           Data Visualization curse. the interface was created with React.js and
           Three.js. the projects was created using D3, API calls and AJAX
           technologies
@@ -33,7 +33,7 @@ function Welcome({ setIsStarted, isMobile }) {
         ) : (
           <>
             <div className="canvas-container">
-              <Suspense fallback="loading..">
+              <Suspense fallback={<span>loading...</span>}>
                 <Canvas>
                   <ambientLight intensity={0.5} />
                   <mesh
@@ -56,6 +56,14 @@ function Welcome({ setIsStarted, isMobile }) {
           </>
         )}
       </div>
+      <footer>
+        <span>
+          Build by{' '}
+          <a href="https://dorplaut.netlify.app/" target="_blank">
+            Dor Plaut
+          </a>
+        </span>
+      </footer>
     </div>
   );
 }
