@@ -61,9 +61,9 @@ function Ring(props) {
   const scatterplotImg = useTexture('/scatterplot.jpg');
 
   // set animation on afer load
-  useEffect(() => {
-    props.setIsAnimating(true);
-  }, []);
+  // useEffect(() => {
+  //   props.setIsAnimating(true);
+  // }, []);
 
   // return
   return (

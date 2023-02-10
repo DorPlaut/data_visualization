@@ -16,6 +16,7 @@ import HeatMap from './components/projects/HeatMap';
 import Treemap from './components/projects/Treemap';
 import Scatterplot from './components/projects/Scatterplot';
 import Welcome from './components/Welcome';
+import LoadScreen from './components/LoadScreen';
 
 function App() {
   // local state
@@ -52,7 +53,7 @@ function App() {
         {isStarted ? (
           <>
             <div className="three">
-              <Suspense fallback={<span>loading...</span>}>
+              <Suspense fallback={<LoadScreen />}>
                 <Canvas>
                   <Three />
                 </Canvas>
@@ -87,6 +88,7 @@ function App() {
         )}
         <>
           <Welcome setIsStarted={setIsStarted} isMobile={isWideScreen} />
+          {/* <LoadScreen /> */}
         </>
       </div>
     </>

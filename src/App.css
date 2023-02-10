@@ -140,6 +140,73 @@ footer a:hover {
   color: purple;
 }
 
+/* Loading bar chart */
+.load-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: aliceblue;
+  width: 100vw;
+  height: 100vh;
+}
+.load-screen h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  animation: fadeFromBottom 3s infinite alternate;
+}
+.chart-container {
+  width: 38rem;
+  height: 25rem;
+  border-bottom: 0.6rem solid aliceblue;
+  border-left: 0.6rem solid aliceblue;
+  position: relative;
+  overflow: hidden;
+}
+.bar {
+  width: 3rem;
+  background: aliceblue;
+  position: absolute;
+  bottom: 0;
+  animation: fadeFromBottom 1.5s infinite alternate;
+  opacity: 0;
+}
+
+.first-bar {
+  height: 10rem;
+  left: 2rem;
+}
+.second-bar {
+  height: 15rem;
+  left: 7rem;
+  animation-delay: 0.5s;
+}
+.third-bar {
+  height: 17rem;
+  left: 12rem;
+  animation-delay: 1s;
+}
+.fourth-bar {
+  height: 16rem;
+  left: 17rem;
+  animation-delay: 1.5s;
+}
+.fifth-bar {
+  height: 20rem;
+  left: 22rem;
+  animation-delay: 2s;
+}
+.sixth-bar {
+  height: 22rem;
+  left: 27rem;
+  animation-delay: 2.5s;
+}
+.seventh-bar {
+  height: 24rem;
+  left: 32rem;
+  animation-delay: 3s;
+}
+
 /* animations */
 
 @keyframes rotate {
@@ -180,5 +247,20 @@ footer a:hover {
   100% {
     opacity: 0;
     display: none;
+  }
+}
+@keyframes fadeFromBottom {
+  0% {
+    transform: translateY(20rem);
+    opacity: 0;
+  }
+
+  /* 80% {
+    transform: translateY(0);
+
+    opacity: 1;
+  } */
+  100% {
+    opacity: 1;
   }
 }
