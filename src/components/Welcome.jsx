@@ -32,23 +32,16 @@ function Welcome({ setIsStarted, isMobile }) {
           </>
         ) : (
           <>
-            <div className="canvas-container">
-              <Suspense fallback={<span>loading...</span>}>
-                <Canvas>
-                  <ambientLight intensity={0.5} />
-                  <mesh
-                    onClick={() => {
-                      handleClick();
-                      dispatch(changePage('home'));
-                    }}
-                  >
-                    <Btn position={[0, 0, 4.1]} text="Lets Go!" />
-                  </mesh>
-                  <Planet speed={2} />
-                </Canvas>
-              </Suspense>
-            </div>
-            <br />
+            <button
+              className="btn"
+              onClick={() => {
+                handleClick();
+                dispatch(changePage('home'));
+              }}
+            >
+              Lets Go!
+            </button>
+
             <span>
               *if your'e using a tablet or an un conventinal screen size. be
               sure to rotate it to use the wide mode
